@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->enum('status', ['Chờ duyệt', 'Đang thuê', 'Hết hạn', 'Hủy'])->default('Chờ duyệt')->index();
+            $table->date('approved_at')->nullable();
             $table->boolean('is_paid')->default(false);
             $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->timestamps();

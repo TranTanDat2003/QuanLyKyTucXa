@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('issue_date')->index();
             $table->date('due_date')->nullable();
             $table->enum('status', ['Chưa thanh toán', 'Đã thanh toán'])->default('Chưa thanh toán')->index();
+            $table->date('paid_at')->nullable();
             $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->timestamps();
         });

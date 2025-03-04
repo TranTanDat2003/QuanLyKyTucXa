@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('utility_bills', function (Blueprint $table) {
             $table->id('utility_bill_id');
-            $table->foreignId('utility_id')->constrained('utilities', 'utility_id')->onDelete('cascade')->index();
+            $table->foreignId('utility_id')
+                ->constrained('utilities', 'utility_id')
+                ->onDelete('cascade')
+                ->index()
+                ->name('utility_bills_utility_id_foreign'); // Tên constraint rõ ràng
             $table->string('student_id', 10)->index();
             $table->decimal('electricity_cost', 10, 2)->nullable();
             $table->decimal('water_cost', 10, 2)->nullable();
@@ -23,7 +27,11 @@ return new class extends Migration
             $table->date('due_date')->nullable();
             $table->enum('status', ['Chưa thanh toán', 'Đã thanh toán'])->default('Chưa thanh toán')->index();
             $table->date('paid_at')->nullable();
-            $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
+            $table->foreign('student_id')
+                ->references('student_id')
+                ->on('students')
+                ->onDelete('cascade')
+                ->name('utility_bills_student_id_foreign'); // Tên constraint rõ ràng
             $table->timestamps();
         });
     }

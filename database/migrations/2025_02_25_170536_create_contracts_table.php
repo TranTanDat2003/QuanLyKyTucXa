@@ -14,14 +14,25 @@ return new class extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->id('contract_id');
             $table->string('student_id', 10)->index();
-            $table->foreignId('room_id')->constrained('rooms', 'room_id')->onDelete('cascade')->index();
-            $table->foreignId('semester_id')->constrained('semesters', 'semester_id')->onDelete('cascade')->index();
+            $table->foreignId('room_id')
+                ->constrained('rooms', 'room_id')
+                ->onDelete('cascade')
+                ->index()
+                ->name('contracts_room_id_foreign');
+            $table->foreignId('semester_id')
+                ->constrained('semesters', 'semester_id')
+                ->onDelete('cascade')
+                ->index()
+                ->name('contracts_semester_id_foreign');
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->enum('status', ['Chờ duyệt', 'Đang thuê', 'Hết hạn', 'Hủy'])->default('Chờ duyệt')->index();
-            $table->date('approved_at')->nullable();
             $table->boolean('is_paid')->default(false);
-            $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
+            $table->foreign('student_id')
+                ->references('student_id')
+                ->on('students')
+                ->onDelete('cascade')
+                ->name('contracts_student_id_foreign');
             $table->timestamps();
         });
     }

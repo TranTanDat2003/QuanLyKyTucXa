@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('utilities', function (Blueprint $table) {
             $table->id('utility_id');
-            $table->foreignId('room_id')->constrained('rooms', 'room_id')->onDelete('cascade')->index();
+            $table->foreignId('room_id')
+                ->constrained('rooms', 'room_id')
+                ->onDelete('cascade')
+                ->index()
+                ->name('utilities_room_id_foreign');
             $table->date('month')->index();
             $table->decimal('electricity_usage', 10, 2)->default(0);
             $table->decimal('water_usage', 10, 2)->default(0);

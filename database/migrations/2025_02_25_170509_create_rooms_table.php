@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id('room_id');
-            $table->foreignId('building_id')->constrained('buildings', 'building_id')->onDelete('cascade')->index();
-            $table->string('room_number', 10);
-            $table->integer('capacity');
-            $table->decimal('price', 10, 2);
-            $table->enum('status', ['Trống', 'Đầy', 'Đang sửa'])->default('Trống')->index();
-            $table->enum('gender', ['Nam', 'Nữ', 'Cả hai'])->default('Cả hai');
-            $table->boolean('allow_cooking')->default(false);
-            $table->boolean('has_air_conditioner')->default(false);
+            $table->string('room_name', 100)->unique();
+            $table->string('room_code', 100)->unique();
+            $table->enum('status', ['Đang sử dụng', 'Không sử dụng'])->default('Đang sử dụng')->index();
+            $table->enum('gender', ['Nam', 'Nữ']);
+            $table->foreignId('building_id')
+                ->constrained('buildings', 'building_id')
+                ->onDelete('cascade')
+                ->index()
+                ->name('rooms_building_id_foreign');
             $table->timestamps();
         });
     }

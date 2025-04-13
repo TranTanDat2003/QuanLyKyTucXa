@@ -12,12 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->string('student_id', 10)->primary();
+            $table->id('student_id');
+            $table->string('student_code', 8)->unique()->index()->comment('Mã số sinh viên');
             $table->string('full_name', 50);
             $table->date('date_of_birth')->nullable();
-            $table->enum('gender', ['Nam', 'Nữ'])->nullable();
-            $table->string('phone', 15)->nullable();
-            $table->string('email', 50)->unique()->nullable();
+            $table->boolean('gender')->comment('gender: 0 - Nam, 1 - Nữ');
+            $table->string('phone', 10)->nullable();
+            $table->string('address')->nullable();
+            $table->string('email', 50)->unique();
+            $table->string('major', 50)->nullable();
+            $table->string('class', 8)->nullable();
+            $table->year('enrollment_year')->comment('Năm nhập học');
+            $table->string('image');
+            $table->unsignedBigInteger('user_id')->unique()->index();
             $table->timestamps();
         });
     }

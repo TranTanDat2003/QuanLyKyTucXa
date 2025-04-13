@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('semesters', function (Blueprint $table) {
             $table->id('semester_id');
             $table->string('semester_name', 50);
+            $table->string('academic_year', 50);
             $table->date('start_date')->index();
             $table->date('end_date')->index();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

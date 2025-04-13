@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('service_name', 50);
             $table->decimal('price', 10, 2);
             $table->boolean('is_active')->default(true);
+            $table->string('service_img_path');
+            $table->text('service_description')->nullable();
             $table->timestamps();
         });
     }

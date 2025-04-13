@@ -13,15 +13,12 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id('room_id');
-            $table->string('room_name', 100)->unique();
             $table->string('room_code', 100)->unique();
-            $table->enum('status', ['Đang sử dụng', 'Không sử dụng'])->default('Đang sử dụng')->index();
+            $table->integer('available_slots')->default(0);
+            $table->enum('status', ['Đang sử dụng', 'Không sử dụng', 'Đang sửa chữa'])->default('Đang sử dụng')->index();
             $table->enum('gender', ['Nam', 'Nữ']);
-            $table->foreignId('building_id')
-                ->constrained('buildings', 'building_id')
-                ->onDelete('cascade')
-                ->index()
-                ->name('rooms_building_id_foreign');
+            $table->unsignedBigInteger('building_id')->index();
+            $table->unsignedBigInteger('room_type_id')->index();
             $table->timestamps();
         });
     }

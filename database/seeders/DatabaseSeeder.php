@@ -2,9 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Staff;
+use App\Models\Student;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +18,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Tạm tắt kiểm tra khóa ngoại
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Xóa dữ liệu các bảng
+        Staff::truncate();
+        Student::truncate();
+        User::truncate();
+
+        // Bật lại kiểm tra khóa ngoại
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        // Tạo dữ liệu mẫu cho các bảng
+        $faker = Faker::create();
+        $faker->unique(true);
+
+        // Gọi AdminSeeder
+        $this->call(AdminSeeder::class);
+
+        // Gọi UsersSeeder
+        $this->call(UsersSeeder::class);
     }
 }

@@ -13,10 +13,15 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id('staff_id');
+            $table->string('staff_code', 8)->unique()->index()->comment('Mã số nhân viên');
             $table->string('full_name', 50);
-            $table->string('position', 30)->nullable();
-            $table->string('phone', 15)->nullable();
-            $table->string('email', 50)->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->boolean('gender')->comment('gender: 0 - Nam, 1 - Nữ');
+            $table->string('phone', 10)->nullable();
+            $table->string('address')->nullable();
+            $table->string('email', 50)->unique();
+            $table->string('image');
+            $table->unsignedBigInteger('user_id')->unique()->index();
             $table->timestamps();
         });
     }

@@ -13,25 +13,13 @@ return new class extends Migration
     {
         Schema::create('utility_bills', function (Blueprint $table) {
             $table->id('utility_bill_id');
-            $table->foreignId('utility_id')
-                ->constrained('utilities', 'utility_id')
-                ->onDelete('cascade')
-                ->index()
-                ->name('utility_bills_utility_id_foreign'); // Tên constraint rõ ràng
-            $table->string('student_id', 10)->index();
-            $table->decimal('electricity_cost', 10, 2)->nullable();
-            $table->decimal('water_cost', 10, 2)->nullable();
-            $table->decimal('service_cost', 10, 2)->nullable();
-            $table->decimal('total_amount', 10, 2)->storedAs('COALESCE(electricity_cost, 0) + COALESCE(water_cost, 0) + COALESCE(service_cost, 0)');
-            $table->date('issue_date')->index();
+            $table->decimal('share_amount', 10, 2)->default(0);
+            $table->decimal('amount_paid', 10, 2)->default(0);
             $table->date('due_date')->nullable();
-            $table->enum('status', ['Chưa thanh toán', 'Đã thanh toán'])->default('Chưa thanh toán')->index();
             $table->date('paid_at')->nullable();
-            $table->foreign('student_id')
-                ->references('student_id')
-                ->on('students')
-                ->onDelete('cascade')
-                ->name('utility_bills_student_id_foreign'); // Tên constraint rõ ràng
+            $table->boolean('is_paid')->default(false)->comment('is_paid: 0 - chưa thanh toán, 1 : đã thanh toán');
+            $table->unsignedBigInteger('utility_id')->index();
+            $table->unsignedBigInteger('contract_id')->index();
             $table->timestamps();
         });
     }

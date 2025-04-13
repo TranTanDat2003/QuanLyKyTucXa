@@ -16,6 +16,7 @@ return new class extends Migration
             $table->decimal('electricity_rate', 10, 2);
             $table->decimal('water_rate', 10, 2);
             $table->date('effective_date')->index();
+            $table->boolean('status')->default(false)->comment('0 : Not effective, 1 : effective');
             $table->timestamps();
         });
     }

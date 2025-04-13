@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('username', 50)->unique();
+            $table->string('username', 8)->unique();
             $table->string('password');
             $table->enum('role', ['admin', 'staff', 'student']);
-            $table->string('student_id', 10)->nullable()->index();
-            $table->bigInteger('staff_id')->unsigned()->nullable()->index();
+            $table->tinyInteger('status')->default(1)->comment('Status: 0 - Khóa, 1 - Hoạt động');
             $table->timestamps();
         });
 

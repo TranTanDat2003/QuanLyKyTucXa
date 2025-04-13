@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('utilities', function (Blueprint $table) {
             $table->id('utility_id');
-            $table->foreignId('room_id')
-                ->constrained('rooms', 'room_id')
-                ->onDelete('cascade')
-                ->index()
-                ->name('utilities_room_id_foreign');
             $table->date('month')->index();
-            $table->decimal('electricity_usage', 10, 2)->default(0);
-            $table->decimal('water_usage', 10, 2)->default(0);
-            $table->decimal('electricity_cost', 10, 2)->nullable();
-            $table->decimal('water_cost', 10, 2)->nullable();
+            $table->decimal('electricity_reading', 10, 2)->default(0)->comment('Chỉ số điện (kWh)');
+            $table->decimal('water_reading', 10, 2)->default(0)->comment('Chỉ số nước (m³)');
+            $table->decimal('electricity_usage', 10, 2)->default(0)->comment('Lượng điện tiêu thụ (kWh)');
+            $table->decimal('water_usage', 10, 2)->default(0)->comment('Lượng nước tiêu thụ (m³)');
+            $table->decimal('utility_cost', 10, 2)->default(0)->comment('Tổng tiền');
+            $table->unsignedBigInteger('room_id')->index();
+            $table->unsignedBigInteger('rate_id')->index();
+            $table->unsignedBigInteger('created_by')->nullable()->index()->comment('Tạo bởi nhân viên');
+            $table->unsignedBigInteger('updated_by')->nullable()->comment('Thay đổi bởi nhân viên');
             $table->timestamps();
         });
     }

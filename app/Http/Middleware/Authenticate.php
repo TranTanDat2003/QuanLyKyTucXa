@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class Admin
+class Authenticate
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,8 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = Auth::user();
-        if (!$user || !in_array($user->role, ['admin', 'staff'])) {
-            return redirect('/')->with('error', 'Bạn không có quyền truy cập trang quản lý!');
+        if (Auth::id() == null) {
+            return redirect()->route('login')->with('error', 'Bạn phải đăng nhập để thực hiện chức năng này');
         }
         return $next($request);
     }

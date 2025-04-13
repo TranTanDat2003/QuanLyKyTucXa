@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class Admin
+class Student
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,8 @@ class Admin
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
-        if (!$user || !in_array($user->role, ['admin', 'staff'])) {
-            return redirect('/')->with('error', 'Bạn không có quyền truy cập trang quản lý!');
+        if (!$user || $user->role !== 'student') {
+            return redirect('/admin')->with('error', 'Bạn không có quyền truy cập trang dành cho sinh viên!');
         }
         return $next($request);
     }

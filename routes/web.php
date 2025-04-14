@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\UtilityController;
 use App\Http\Controllers\BuildingController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PaymentController;
@@ -22,7 +23,7 @@ use App\Http\Controllers\UtilityRateController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->middleware('guest')->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('authentication')->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('student')->group(function () {
@@ -57,6 +58,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/student/profile', [PageController::class, 'showProfilePage'])->name('student.profile');
         Route::put('/student/profile/update', [StudentController::class, 'updateProfile'])->name('student.profile.update');
         Route::put('/student/profile/password', [StudentController::class, 'updatePassword'])->name('student.password.update');
+
+        // Route cho trang chat
+        Route::get('/chat', [ChatController::class, 'index'])->name('chat.show');
+        Route::post('/chat/message', [ChatController::class, 'sendMessage'])->name('chat.send');
     });
 
     Route::middleware('admin')->group(function () {

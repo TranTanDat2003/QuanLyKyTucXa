@@ -38,7 +38,7 @@ header {
     display: none;
 }
 
-.row {
+.row-css {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -320,6 +320,178 @@ footer {
     animation: spin 1s linear infinite;
 }
 
+.chat-container {
+    padding: 100px 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.chat-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.chat-card:hover {
+    transform: translateY(-5px);
+}
+
+.chat-card .card-header {
+    background: #1e3a8a;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    padding: 15px 20px;
+}
+
+.chat-card .card-header h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.chat-card .card-body {
+    padding: 20px;
+}
+
+.messages-wrapper {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 15px;
+    height: 60vh;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+#messages {
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #facc15 #f9fafb;
+}
+
+#messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#messages::-webkit-scrollbar-track {
+    background: #f9fafb;
+}
+
+#messages::-webkit-scrollbar-thumb {
+    background: #facc15;
+    border-radius: 3px;
+}
+
+#messages li {
+    text-align: start;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: background 0.3s;
+}
+
+#messages li.text-primary {
+    color: #1e3a8a;
+    font-weight: 600;
+}
+
+#messages li:hover {
+    background: #f0f4ff;
+}
+
+.message-form {
+    margin-top: 10px;
+}
+
+.message-form .input-group {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.message-form input.form-control {
+    border: 1px solid #d1d5db;
+    border-right: none;
+    padding: 12px;
+    font-size: 14px;
+    background: #fff;
+}
+
+.message-form input.form-control:focus {
+    border-color: #facc15;
+    box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.1);
+}
+
+.message-form .btn-primary {
+    background: #facc15;
+    border: none;
+    color: #1e3a8a;
+    font-weight: 600;
+    padding: 12px 20px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.message-form .btn-primary:hover {
+    background: #eab308;
+    transform: translateY(-2px);
+}
+
+.users-wrapper {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 15px;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.users-wrapper h4 {
+    font-size: 16px;
+    color: #1e3a8a;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+#users {
+    height: calc(100% - 30px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #facc15 #f9fafb;
+}
+
+#users::-webkit-scrollbar {
+    width: 6px;
+}
+
+#users::-webkit-scrollbar-track {
+    background: #f9fafb;
+}
+
+#users::-webkit-scrollbar-thumb {
+    background: #facc15;
+    border-radius: 3px;
+}
+
+#users li {
+    padding: 10px;
+    margin-bottom: 5px;
+    color: #1e3a8a;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+#users li:hover {
+    background: #f0f4ff;
+}
+
+.book-now.disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -377,10 +549,37 @@ footer {
         flex-direction: column;
         text-align: center;
     }
+
+    .chat-container {
+        padding: 80px 15px 20px;
+    }
+
+    .messages-wrapper,
+    .users-wrapper {
+        height: 50vh;
+    }
+
+    .col-md-8,
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .users-wrapper {
+        margin-top: 20px;
+    }
+
+    .message-form .input-group {
+        flex-wrap: nowrap;
+    }
+
+    .message-form input.form-control {
+        font-size: 13px;
+    }
+
+    .message-form .btn-primary {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
 }
 
-.book-now.disabled {
-    background: #d1d5db;
-    cursor: not-allowed;
-    pointer-events: none;
-}

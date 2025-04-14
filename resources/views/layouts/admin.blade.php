@@ -10,7 +10,7 @@
 
     <title>@yield('title', 'Quản lý Ký Túc Xá')</title>
 
-    @vite(['resources/js/app.js'])
+    @vite(['resources/js/admin.js'])
 
     <link rel="shortcut icon" href="{{ asset('images/logo/dorm.png') }}" type="image/x-icon">
 

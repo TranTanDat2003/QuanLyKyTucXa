@@ -1,4 +1,7 @@
+import './bootstrap';
+
 import '../css/app.css';
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const loading = document.querySelector('.loading');

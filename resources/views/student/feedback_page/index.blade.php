@@ -57,7 +57,6 @@
 
 @push('styles')
     <style>
-        /* Kế thừa CSS từ index.html */
         .repair-section {
             padding: 100px 20px 40px;
             max-width: 1200px;

@@ -1,5 +1,7 @@
 import '../css/app.css';
 
+import './app.js';
+
 document.addEventListener('DOMContentLoaded', function () {
     const preloader = document.getElementById('preloader');
     const images = document.getElementsByTagName('img');

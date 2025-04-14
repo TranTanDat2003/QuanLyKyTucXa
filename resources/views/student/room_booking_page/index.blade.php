@@ -8,11 +8,11 @@
         <div class="semester-info">
             <h2>Thông tin đăng ký</h2>
             @if ($semester)
-                <div class="row">
+                <div class="row-css">
                     <p><strong>Học kỳ:</strong> {{ $semester->semester_name }}</p>
                     <p><strong>Năm học:</strong> {{ $semester->academic_year }}</p>
                 </div>
-                <div class="row">
+                <div class="row-css">
                     <p><strong>Thời gian đăng ký:</strong> {{ $registrationStart->format('d/m/Y') }} - {{ $registrationEnd->format('d/m/Y') }}</p>
                     <p><strong>Thời gian ở:</strong> {{ $semester->start_date->format('d/m/Y') }} - {{ $semester->end_date->format('d/m/Y') }}</p>
                 </div>

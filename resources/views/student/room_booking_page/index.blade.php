@@ -344,12 +344,12 @@
                             $('#room-list').html(roomsHtml);
                         } else {
                             $('#room-list').html('<p>Không có loại phòng phù hợp.</p>');
-                            alert(response.message);
+                            toastr.warning(response.message);
                         }
                     },
                     error: function(xhr) {
                         console.error('Error:', xhr);
-                        alert('Có lỗi xảy ra khi tải danh sách phòng.');
+                        toastr.error('Có lỗi xảy ra khi tải danh sách phòng.');
                     }
                 });
             }
@@ -369,14 +369,14 @@
                     },
                     success: function(response) {
                         if (response.success) {
-                            alert('Đăng ký phòng thành công!');
+                            toastr.success('Đăng ký phòng thành công!');
                             loadRoomList();
                         } else {
-                            alert('Đăng ký thất bại: ' + response.message);
+                            toastr.error('Đăng ký thất bại: ' + response.message);
                         }
                     },
                     error: function(xhr) {
-                        alert('Có lỗi xảy ra: ' + (xhr.responseJSON?.message || 'Không xác định'));
+                        toastr.error((xhr.responseJSON?.message || 'Không xác định'));
                     }
                 });
             });

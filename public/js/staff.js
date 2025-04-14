@@ -118,7 +118,7 @@ $(document).ready(function() {
                 if (xhr.status === 422) {
                     handleValidationErrors('addStaffForm', xhr.responseJSON.errors);
                 } else {
-                    toastr.error('Có lỗi xảy ra: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                     console.log(xhr.responseJSON);
                 }
             }
@@ -175,7 +175,7 @@ $(document).ready(function() {
                 if (xhr.status === 422) {
                     handleValidationErrors('editStaffForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             }
         });
@@ -201,7 +201,7 @@ $(document).ready(function() {
                     }
                 },
                 error: function(xhr) {
-                    alert('Có lỗi xảy ra: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             });
         });
@@ -236,7 +236,7 @@ $(document).ready(function() {
             },
             error: function(xhr) {
                 console.log('Lỗi AJAX:', xhr.status, xhr.responseJSON);
-                alert('Lỗi khi tải dữ liệu: ' + (xhr.responseJSON ? xhr.responseJSON.message : 'Không có phản hồi từ server'));
+                toastr.error((xhr.responseJSON ? xhr.responseJSON.message : 'Không có phản hồi từ server'));
             }
         });
     });

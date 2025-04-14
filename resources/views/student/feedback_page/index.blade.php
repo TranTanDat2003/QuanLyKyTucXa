@@ -295,15 +295,15 @@
                     processData: false,
                     success: function(response) {
                         if (response.success) {
-                            alert(response.message);
                             loadFeedbacks();
                             $('#repairForm')[0].reset();
                             $('#image-preview').hide();
                             $('#file-name').text('Chưa chọn ảnh');
+                            toastr.success(response.message);
                         }
                     },
                     error: function(xhr) {
-                        alert('Có lỗi xảy ra: ' + (xhr.responseJSON?.message || 'Không xác định'));
+                        toastr.error((xhr.responseJSON?.message || 'Không xác định'));
                     }
                 });
             });

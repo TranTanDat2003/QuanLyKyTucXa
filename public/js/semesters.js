@@ -110,16 +110,16 @@ $(document).ready(function() {
                     $('#addSemesterModal').modal('hide');
                     $('#addSemesterForm')[0].reset();
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 } else {
-                    alert('Có lỗi xảy ra khi thêm học kỳ');
+                    toastr.error(response.message || 'Có lỗi xảy ra khi thêm học kỳ');
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('addSemesterForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra khi thêm học kỳ: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             }
         });
@@ -156,16 +156,16 @@ $(document).ready(function() {
                     $('#editSemesterModal').modal('hide');
                     $('#editSemesterForm')[0].reset();
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 } else {
-                    alert('Có lỗi xảy ra khi cập nhật học kỳ');
+                    toastr.error(response.message || 'Có lỗi xảy ra khi cập nhật học kỳ');
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('editSemesterForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra khi cập nhật học kỳ: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             }
         });
@@ -189,13 +189,13 @@ $(document).ready(function() {
                     if (response.success) {
                         $('#deleteConfirmModal').modal('hide');
                         table.ajax.reload();
-                        alert(response.message);
+                        toastr.success(response.message);
                     } else {
-                        alert('Có lỗi xảy ra khi xóa học kỳ');
+                        toastr.error(response.message || 'Có lỗi xảy ra khi xóa học kỳ');
                     }
                 },
                 error: function(xhr) {
-                    alert('Có lỗi xảy ra khi xóa học kỳ: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             });
         });
@@ -238,11 +238,11 @@ $(document).ready(function() {
 
                     $('#viewSemesterModal').modal('show');
                 } else {
-                    alert('Lỗi khi tải dữ liệu: ' + response.message);
+                    toastr.error(response.message || 'Có lỗi xảy ra khi tải thông tin học kỳ');
                 }
             },
             error: function(xhr) {
-                alert('Lỗi khi tải dữ liệu: ' + (xhr.responseJSON ? xhr.responseJSON.message : 'Không xác định'));
+                toastr.error((xhr.responseJSON ? xhr.responseJSON.message : 'Không xác định'));
             }
         });
     });

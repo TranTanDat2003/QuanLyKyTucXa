@@ -115,14 +115,14 @@ $(document).ready(function() {
                 if (response.success) {
                     $('#addStudentModal').modal('hide');
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('addStudentForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                     console.log(xhr.responseJSON);
                 }
             }
@@ -173,7 +173,7 @@ $(document).ready(function() {
                     $('#editStudentModal').modal('hide');
                     $('#editStudentForm')[0].reset();
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 }
             },
             error: function(xhr) {
@@ -181,7 +181,7 @@ $(document).ready(function() {
                 if (xhr.status === 422) {
                     handleValidationErrors('editStudentForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             }
         });
@@ -203,11 +203,11 @@ $(document).ready(function() {
                     if (response.success) {
                         $('#deleteConfirmModal').modal('hide');
                         table.ajax.reload();
-                        alert(response.message);
+                        toastr.success(response.message);
                     }
                 },
                 error: function(xhr) {
-                    alert('Có lỗi xảy ra: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             });
         });
@@ -283,7 +283,7 @@ $(document).ready(function() {
             },
             error: function(xhr) {
                 console.log('Lỗi AJAX:', xhr.status, xhr.responseJSON);
-                alert('Lỗi khi tải dữ liệu: ' + (xhr.responseJSON ? xhr.responseJSON.message : 'Không có phản hồi từ server'));
+                toastr.error((xhr.responseJSON ? xhr.responseJSON.message : 'Không có phản hồi từ server'));
             }
         });
     });
@@ -304,7 +304,7 @@ $(document).ready(function() {
                 }
             },
             error: function(xhr) {
-                alert('Lỗi khi tải chi tiết hóa đơn: ' + (xhr.responseJSON ? xhr.responseJSON.message : 'Không có phản hồi từ server'));
+                toastr.error((xhr.responseJSON ? xhr.responseJSON.message : 'Không có phản hồi từ server'));
             }
         });
     });

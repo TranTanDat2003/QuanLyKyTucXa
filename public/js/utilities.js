@@ -103,21 +103,21 @@ $(document).ready(function() {
                 if (response.success) {
                     $('#addUtilityModal').modal('hide');
                     $('#addUtilityForm')[0].reset();
-                    alert(response.message);
+                    toastr.success(response.message);
                 } else {
-                    alert('Có lỗi xảy ra khi thêm tiện ích');
+                    toastr.error(response.message || 'Có lỗi xảy ra khi thêm tiện ích');
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     const errors = xhr.responseJSON.errors || { message: [xhr.responseJSON.message] };
                     if (errors.month) {
-                        alert(errors.month[0]);
+                        toastr.error(errors.month[0]);
                     } else {
                         handleValidationErrors('addUtilityForm', errors);
                     }
                 } else {
-                    alert('Có lỗi xảy ra khi thêm tiện ích: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
                 console.log(xhr.responseText);
             }
@@ -141,16 +141,16 @@ $(document).ready(function() {
                     $('#editUtilityModal').modal('hide');
                     $('#editUtilityForm')[0].reset();
                     $('#utilitiesTable').DataTable().ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 } else {
-                    alert('Có lỗi xảy ra khi cập nhật tiện ích');
+                    toastr.error(response.message || 'Có lỗi xảy ra khi cập nhật tiện ích');
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('editUtilityForm', xhr.responseJSON.errors || { message: [xhr.responseJSON.message] });
                 } else {
-                    alert('Có lỗi xảy ra khi cập nhật tiện ích: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
                 console.log(xhr.responseText);
             }

@@ -22,7 +22,8 @@
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/assets.css') }}" rel="stylesheet" >
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <link href="{{ asset('vendor/toastr/toastr.min.css') }}" rel="stylesheet">
+    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"> --}}
 
     <!-- Thêm style tùy chỉnh nếu cần -->
     @stack('styles')
@@ -126,19 +127,6 @@
                     <span>Đơn giá tiện ích</span>
                 </a>
             </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBills" aria-expanded="true" aria-controls="collapseBills">
-                    <i class="fas fa-fw fa-file-invoice"></i>
-                    <span>Hóa đơn</span>
-                </a>
-                <div id="collapseBills" class="collapse {{ request()->routeIs('utility_bills.*') || request()->routeIs('service_bills.*') ? 'show' : '' }}" aria-labelledby="headingBills" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Hóa đơn:</h6>
-                        <a class="collapse-item {{ request()->routeIs('utility_bills.index') ? 'active' : '' }}" href="{{ route('utility_bills.index') }}">Hóa đơn tiện ích</a>
-                        <a class="collapse-item {{ request()->routeIs('service_bills.index') ? 'active' : '' }}" href="{{ route('service_bills.index') }}">Hóa đơn dịch vụ</a>
-                    </div>
-                </div>
-            </li> --}}
 
             <!-- Quản lý dịch vụ -->
             <hr class="sidebar-divider">
@@ -304,7 +292,9 @@
     <!-- Page level plugins -->
     <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
+
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
 
     <!-- Thêm script tùy chỉnh nếu cần -->
     @stack('scripts')

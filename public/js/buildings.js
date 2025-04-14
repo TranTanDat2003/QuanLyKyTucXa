@@ -86,16 +86,16 @@ $(document).ready(function() {
                     $('#addBuildingModal').modal('hide');
                     $('#addBuildingForm')[0].reset();
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 } else {
-                    alert('Có lỗi xảy ra khi thêm tòa nhà');
+                    toastr.error(response.message || 'Có lỗi xảy ra khi thêm tòa nhà');
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('addBuildingForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra khi thêm tòa nhà: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
                 console.log(xhr.responseText);
             }
@@ -132,16 +132,16 @@ $(document).ready(function() {
                     $('#editBuildingModal').modal('hide');
                     $('#editBuildingForm')[0].reset();
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 } else {
-                    alert('Có lỗi xảy ra khi cập nhật tòa nhà');
+                    toastr.error(response.message || 'Có lỗi xảy ra khi cập nhật tòa nhà');
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('editBuildingForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra khi cập nhật tòa nhà: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
                 console.log(xhr.responseText);
             }
@@ -166,13 +166,13 @@ $(document).ready(function() {
                     if (response.success) {
                         $('#deleteConfirmModal').modal('hide');
                         table.ajax.reload();
-                        alert(response.message);
+                        toastr.success(response.message);
                     } else {
-                        alert('Có lỗi xảy ra khi xóa tòa nhà');
+                        toastr.error(response.message || 'Có lỗi xảy ra khi xóa tòa nhà');
                     }
                 },
                 error: function(xhr) {
-                    alert('Có lỗi xảy ra khi xóa tòa nhà: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                     console.log(xhr.responseText);
                 }
             });

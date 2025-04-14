@@ -572,7 +572,7 @@
                         currentAvatar.src = response.student.image === 'default_profile.jpg' 
                             ? '{{ asset('images/profiles/default_profile.jpg') }}' 
                             : `/images/profiles/students/${response.student.image}`;
-                        alert(response.message);
+                        toastr.success(response.message);
                     }
                 },
                 error: function(xhr) {
@@ -582,7 +582,7 @@
                             document.getElementById(`edit_${field}-error`).textContent = errors[field][0];
                         }
                     } else {
-                        alert('Có lỗi xảy ra: ' + (xhr.responseJSON?.message || 'Không xác định'));
+                        toastr.error((xhr.responseJSON?.message || 'Không xác định'));
                     }
                 }
             });
@@ -613,7 +613,7 @@
                 success: function(response) {
                     if (response.success) {
                         passwordModal.style.display = 'none';
-                        alert(response.message);
+                        toastr.success(response.message);
                     }
                 },
                 error: function(xhr) {
@@ -629,7 +629,7 @@
                             }
                         }
                     } else {
-                        alert('Có lỗi xảy ra: ' + (xhr.responseJSON?.message || 'Không xác định'));
+                        toastr.error((xhr.responseJSON?.message || 'Không xác định'));
                     }
                 }
             });

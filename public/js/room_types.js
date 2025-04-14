@@ -130,16 +130,16 @@ $(document).ready(function() {
                     $('#addRoomTypeModal').modal('hide');
                     $('#addRoomTypeForm')[0].reset();
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 } else {
-                    alert('Có lỗi xảy ra khi thêm loại phòng');
+                    toastr.error(response.message || 'Có lỗi xảy ra khi thêm loại phòng');
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('addRoomTypeForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra khi thêm loại phòng: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
                 console.log(xhr.responseText);
             }
@@ -187,16 +187,16 @@ $(document).ready(function() {
                     $('#editRoomTypeModal').modal('hide');
                     $('#editRoomTypeForm')[0].reset();
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 } else {
-                    alert('Có lỗi xảy ra khi cập nhật loại phòng');
+                    toastr.error(response.message || 'Có lỗi xảy ra khi cập nhật loại phòng');
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('editRoomTypeForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra khi cập nhật loại phòng: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
                 console.log(xhr.responseText);
             }
@@ -222,13 +222,13 @@ $(document).ready(function() {
                     if (response.success) {
                         $('#deleteConfirmModal').modal('hide');
                         table.ajax.reload();
-                        alert(response.message);
+                        toastr.success(response.message);
                     } else {
-                        alert('Có lỗi xảy ra khi xóa loại phòng');
+                        toastr.error(response.message || 'Có lỗi xảy ra khi xóa loại phòng');
                     }
                 },
                 error: function(xhr) {
-                    alert('Có lỗi xảy ra khi xóa loại phòng: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                     console.log(xhr.responseText);
                 }
             });
@@ -281,11 +281,11 @@ $(document).ready(function() {
 
                     $('#viewRoomTypeModal').modal('show');
                 } else {
-                    alert('Lỗi khi tải dữ liệu: ' + response.message);
+                    toastr.error(response.message || 'Có lỗi xảy ra khi tải thông tin loại phòng');
                 }
             },
             error: function(xhr) {
-                alert('Lỗi khi tải dữ liệu: ' + (xhr.responseJSON ? xhr.responseJSON.message : 'Không xác định'));
+                toastr.error((xhr.responseJSON ? xhr.responseJSON.message : 'Không xác định'));
                 console.log(xhr.responseText);
             }
         });

@@ -106,16 +106,16 @@ $(document).ready(function() {
                     $('#addRoomModal').modal('hide');
                     $('#addRoomForm')[0].reset();
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 } else {
-                    alert('Có lỗi xảy ra khi thêm phòng');
+                    toastr.error(response.message || 'Có lỗi xảy ra khi thêm phòng');
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('addRoomForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra khi thêm phòng: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
                 console.log(xhr.responseText);
             }
@@ -157,16 +157,16 @@ $(document).ready(function() {
                     $('#editRoomModal').modal('hide');
                     $('#editRoomForm')[0].reset();
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 } else {
-                    alert('Có lỗi xảy ra khi cập nhật phòng');
+                    toastr.message(response.message || 'Có lỗi xảy ra khi cập nhật phòng');
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('editRoomForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra khi cập nhật phòng: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
                 console.log(xhr.responseText);
             }
@@ -191,13 +191,13 @@ $(document).ready(function() {
                     if (response.success) {
                         $('#deleteConfirmModal').modal('hide');
                         table.ajax.reload();
-                        alert(response.message);
+                        toastr.success(response.message);
                     } else {
-                        alert('Có lỗi xảy ra khi xóa phòng');
+                        toastr.error(response.message || 'Có lỗi xảy ra khi xóa phòng');
                     }
                 },
                 error: function(xhr) {
-                    alert('Có lỗi xảy ra khi xóa phòng: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                     console.log(xhr.responseText);
                 }
             });

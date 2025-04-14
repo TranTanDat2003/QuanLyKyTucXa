@@ -203,12 +203,12 @@
                             $('#service-list').html(servicesHtml);
                         } else {
                             $('#service-list').html('<p>Không có dịch vụ nào khả dụng.</p>');
-                            alert(response.message);
+                            toastr.warning(response.message);
                         }
                     },
                     error: function(xhr) {
                         console.error('Error:', xhr);
-                        alert('Có lỗi xảy ra khi tải danh sách dịch vụ.');
+                        toastr.error('Có lỗi xảy ra khi tải danh sách dịch vụ.');
                     }
                 });
             }
@@ -233,10 +233,10 @@
                     },
                     success: function(response) {
                         if (response.success) {
-                            alert(response.message);
+                            toastr.success(response.message);
                             loadServiceList();
                         } else {
-                            alert('Đăng ký thất bại: ' + response.message);
+                            toastr.error('Đăng ký thất bại: ' + response.message);
                         }
                     },
                     error: function(xhr) {
@@ -246,7 +246,7 @@
                                 $(`#bike-plate-error-${serviceId}`).text(errors.bike_plate[0]);
                             }
                         } else {
-                            alert('Có lỗi xảy ra: ' + (xhr.responseJSON?.message || 'Không xác định'));
+                            toastr.error((xhr.responseJSON?.message || 'Không xác định'));
                         }
                     }
                 });

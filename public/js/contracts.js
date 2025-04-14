@@ -103,14 +103,14 @@ $(document).ready(function() {
                 if (response.success) {
                     $('#addContractModal').modal('hide');
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('addContractForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Lỗi: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             }
         });
@@ -132,11 +132,11 @@ $(document).ready(function() {
                     if (response.success) {
                         $('#approveContractModal').modal('hide');
                         table.ajax.reload();
-                        alert(response.message);
+                        toastr.success(response.message);
                     }
                 },
                 error: function(xhr) {
-                    alert('Lỗi: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             });
         });
@@ -158,11 +158,11 @@ $(document).ready(function() {
                     if (response.success) {
                         $('#cancelContractModal').modal('hide');
                         table.ajax.reload();
-                        alert(response.message);
+                        toastr.success(response.message);
                     }
                 },
                 error: function(xhr) {
-                    alert('Lỗi: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             });
         });
@@ -184,11 +184,12 @@ $(document).ready(function() {
                     if (response.success) {
                         $('#checkoutContractModal').modal('hide');
                         table.ajax.reload();
-                        alert(response.message);
+                        toastr.success(response.message);
                     }
                 },
                 error: function(xhr) {
-                    alert('Lỗi: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
+                    console.error(xhr.responseJSON.message);
                 }
             });
         });
@@ -217,7 +218,7 @@ $(document).ready(function() {
                 }
             },
             error: function(xhr) {
-                alert('Lỗi khi tải chi tiết hợp đồng: ' + xhr.responseJSON.message);
+                toastr.error(xhr.responseJSON.message);
             }
         });
     });

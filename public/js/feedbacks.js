@@ -106,11 +106,11 @@ $(document).ready(function() {
                                     if (response.success) {
                                         $('#approveDateModal').modal('hide');
                                         table.ajax.reload();
-                                        alert(response.message);
+                                        toastr.success(response.message);
                                     }
                                 },
                                 error: function(xhr) {
-                                    alert('Có lỗi xảy ra: ' + xhr.responseJSON.message);
+                                    toastr.error(xhr.responseJSON.message);
                                 }
                             });
                         });
@@ -137,11 +137,11 @@ $(document).ready(function() {
                                     if (response.success) {
                                         $('#approveDateModal').modal('hide');
                                         table.ajax.reload();
-                                        alert(response.message);
+                                        toastr.success(response.message);
                                     }
                                 },
                                 error: function(xhr) {
-                                    alert('Có lỗi xảy ra: ' + xhr.responseJSON.message);
+                                    toastr.error(xhr.responseJSON.message);
                                 }
                             });
                         });
@@ -168,11 +168,11 @@ $(document).ready(function() {
                                         if (response.success) {
                                             $('#approveDateModal').modal('hide');
                                             table.ajax.reload();
-                                            alert(response.message);
+                                            toastr.success(response.message);
                                         }
                                     },
                                     error: function(xhr) {
-                                        alert('Có lỗi xảy ra: ' + xhr.responseJSON.message);
+                                        toastr.error(xhr.responseJSON.message);
                                     }
                                 });
                             });
@@ -196,11 +196,11 @@ $(document).ready(function() {
                     if (response.success) {
                         $('#deleteConfirmModal').modal('hide');
                         table.ajax.reload();
-                        alert(response.message);
+                        toastr.success(response.message);
                     }
                 },
                 error: function(xhr) {
-                    alert('Có lỗi xảy ra: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             });
         });
@@ -229,7 +229,7 @@ $(document).ready(function() {
                 }
             },
             error: function(xhr) {
-                alert('Lỗi khi tải dữ liệu: ' + xhr.responseJSON.message);
+                toastr.error(xhr.responseJSON.message);
             }
         });
     });

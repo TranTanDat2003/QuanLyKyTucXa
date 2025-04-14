@@ -97,16 +97,16 @@ $(document).ready(function() {
                     $('#addUtilityRateModal').modal('hide');
                     $('#addUtilityRateForm')[0].reset();
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 } else {
-                    alert('Có lỗi xảy ra khi thêm giá tiện ích');
+                    toastr.error(response.message || 'Có lỗi xảy ra khi thêm giá tiện ích');
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('addUtilityRateForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra khi thêm giá tiện ích: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             }
         });
@@ -142,16 +142,16 @@ $(document).ready(function() {
                     $('#editUtilityRateModal').modal('hide');
                     $('#editUtilityRateForm')[0].reset();
                     table.ajax.reload();
-                    alert(response.message);
+                    toastr.success(response.message);
                 } else {
-                    alert('Có lỗi xảy ra khi cập nhật giá tiện ích');
+                    toastr.error(response.message || 'Có lỗi xảy ra khi cập nhật giá tiện ích');
                 }
             },
             error: function(xhr) {
                 if (xhr.status === 422) {
                     handleValidationErrors('editUtilityRateForm', xhr.responseJSON.errors);
                 } else {
-                    alert('Có lỗi xảy ra khi cập nhật giá tiện ích: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             }
         });
@@ -175,13 +175,13 @@ $(document).ready(function() {
                     if (response.success) {
                         $('#deleteConfirmModal').modal('hide');
                         table.ajax.reload();
-                        alert(response.message);
+                        toastr.success(response.message);
                     } else {
-                        alert('Có lỗi xảy ra khi xóa giá tiện ích');
+                        toastr.error(response.message || 'Có lỗi xảy ra khi xóa giá tiện ích');
                     }
                 },
                 error: function(xhr) {
-                    alert('Có lỗi xảy ra khi xóa giá tiện ích: ' + xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
                 }
             });
         });

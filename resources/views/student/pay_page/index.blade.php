@@ -200,7 +200,7 @@
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 if (!selectedMethod) {
-                    alert('Vui lòng chọn phương thức thanh toán!');
+                    toastr.warning('Vui lòng chọn phương thức thanh toán!');
                     return;
                 }
 
@@ -244,11 +244,11 @@
                             const today = new Date().toLocaleDateString('vi-VN');
                             infoRow.innerHTML += `<p><strong>Ngày đóng:</strong> ${today}</p>`;
                         } else {
-                            alert('Thanh toán không thành công: ' + (response.message || 'Lỗi không xác định'));
+                            toastr.error('Thanh toán không thành công: ' + (response.message || 'Lỗi không xác định'));
                         }
                     },
                     error: function(xhr) {
-                        alert('Lỗi: ' + (xhr.responseJSON?.message || 'Không xác định'));
+                        toastr.error((xhr.responseJSON?.message || 'Không xác định'));
                     }
                 });
             });

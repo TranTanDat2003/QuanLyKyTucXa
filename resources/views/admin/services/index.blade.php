@@ -56,6 +56,10 @@
         width: 80px;
         height: 80px;
     }
+    .img_table {
+        width: 80px;
+        height: 80px;
+    }
 </style>
 @endpush
 

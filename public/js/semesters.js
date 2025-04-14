@@ -228,8 +228,10 @@ $(document).ready(function() {
                                 data: 'status',
                                 render: function(data) {
                                     if (data === 'Đã duyệt') return '<span class="badge badge-success">Đã duyệt</span>';
+                                    if (data === 'Đang ở') return '<span class="badge badge-success">Đang ở</span>';
                                     if (data === 'Chờ duyệt') return '<span class="badge badge-warning">Chờ duyệt</span>';
                                     if (data === 'Hết hạn') return '<span class="badge badge-danger">Hết hạn</span>';
+                                    if (data === 'Hủy') return '<span class="badge badge-danger">Đã hủy</span>';
                                     return `<span class="badge badge-secondary">${data}</span>`;
                                 }
                             }

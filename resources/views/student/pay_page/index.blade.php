@@ -126,11 +126,11 @@
         <div class="payment-methods">
             <h2>Phương thức thanh toán</h2>
             <div class="method" data-method="VNPAY">
-                <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-VNPAY-QR-1.png" alt="VNPAY">
+                <img src="{{ asset('images/logo/vnpay.png') }}" alt="VNPAY">
                 <span>VNPAY</span>
             </div>
             <div class="method" data-method="MOMO">
-                <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="MoMo">
+                <img src="{{ asset('images/logo/momo.png') }}" alt="MoMo">
                 <span>MoMo</span>
             </div>
             <div class="method" data-method="ZALOPAY">

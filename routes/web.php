@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
         // Route cho trang chat
         Route::get('/chat', [ChatController::class, 'index'])->name('chat.show');
         Route::post('/chat/message', [ChatController::class, 'sendMessage'])->name('chat.send');
+        Route::post('/chat/greet/{receiver}', [ChatController::class, 'greetReceived'])->name('chat.greet');
     });
 
     Route::middleware('admin')->group(function () {

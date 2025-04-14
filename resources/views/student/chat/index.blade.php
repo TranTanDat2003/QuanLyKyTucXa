@@ -57,6 +57,8 @@
             .here((users) => {
                 users.forEach((user, index) => {
                     const element = document.createElement('li');
+                    element.setAttribute('id', user.id);
+                    element.setAttribute('onclick', `greetUser("${user.id}")`);
                     element.innerText = user.name;
 
                     usersElement.appendChild(element);
@@ -64,6 +66,7 @@
             })
             .joining((user) => {
                 const element = document.createElement('li');
+                element.setAttribute('id', user.id);
                 element.innerText = user.name;
 
                 usersElement.appendChild(element);
@@ -104,5 +107,25 @@
 
             messageElement.value = '';
         });
+    </script>
+
+    <script>
+        function greetUser(userId) {
+            window.axios.post('/chat/greet/' + userId);
+        }
+    </script>
+
+    <script type="module">
+        const messagesElement = document.getElementById('messages');
+
+        Echo.private('chat.{{auth()->user()->id}}')
+            .listen('GreetingSent', (e) => {
+                const element = document.createElement('li');
+                element.innerText = e.message;
+                element.classList.add('text-success');
+
+                messagesElement.appendChild(element);
+                messagesElement.scrollTop = messagesElement.scrollHeight;
+            })
     </script>
 @endpush

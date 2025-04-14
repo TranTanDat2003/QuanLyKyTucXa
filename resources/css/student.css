@@ -486,6 +486,16 @@ footer {
     background: #f0f4ff;
 }
 
+#users li {
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#messages li.text-success {
+    color: #15803d;
+    font-style: italic;
+}
+
 .book-now.disabled {
     background: #d1d5db;
     cursor: not-allowed;

@@ -70,7 +70,7 @@
                     <i class="fas fa-fw fa-user-tie"></i>
                     <span>Nhân viên</span>
                 </a>
-                <div id="collapseStaffs" class="collapse {{ request()->routeIs('staff.*') && !request()->routeIs('staff.profile') && !request()->routeIs('staff.password.update') ? 'show' : '' }}" aria-labelledby="headingStaffs" data-parent="#accordionSidebar">
+                <div id="collapseStaffs" class="collapse {{ request()->routeIs('staff.*') && !request()->routeIs('staff.profile') && !request()->routeIs('staff.password.form') ? 'show' : '' }}" aria-labelledby="headingStaffs" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Nhân viên:</h6>
                         <a class="collapse-item {{ request()->routeIs('staff.index') ? 'active' : '' }}" href="{{ route('staff.index') }}">Danh sách nhân viên</a>

@@ -9,6 +9,8 @@ export default defineConfig({
                 'resources/css/login.css',
                 'resources/css/student.css',
                 'resources/js/app.js',
+                'resources/js/admin.js',
+                'resources/js/student.js',
             ],
             refresh: true,
         }),

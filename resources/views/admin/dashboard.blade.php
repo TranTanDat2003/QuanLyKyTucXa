@@ -144,7 +144,7 @@
                                         <tr>
                                             <td>{{ $contract->contract_id }}</td>
                                             <td>{{ $contract->student->full_name }}</td>
-                                            <td>{{ $contract->room->room_code }}</td>
+                                            <td>{{ $contract->room->room_code ?? 'Chưa phân phòng' }}</td>
                                             <td>{{ $contract->status }}</td>
                                             <td>
                                                 <button class="btn btn-sm btn-info view-contract" data-id="{{ $contract->contract_id }}" data-toggle="modal" data-target="#viewContractModal">

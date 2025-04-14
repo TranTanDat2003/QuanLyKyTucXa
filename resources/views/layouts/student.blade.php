@@ -9,12 +9,12 @@
     <title>@yield('title', 'Quản lý Ký Túc Xá')</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link href="{{ asset('vendor/fontawesome-beta3/css/all.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="{{ asset('vendor/toastr/toastr.min.css') }}" rel="stylesheet">
 
     <link rel="shortcut icon" href="{{ asset('images/logo/dorm.png') }}" type="image/x-icon">
 
-    @vite(['resources/css/student.css', 'resources/js/app.js'])
+    @vite(['resources/css/student.css', 'resources/js/student.js'])
 
     @stack('styles')
 </head>
@@ -44,21 +44,25 @@
         const hamburger = document.querySelector('.hamburger');
         const navUl = document.querySelector('nav ul');
 
-        hamburger.addEventListener('click', () => {
-            navUl.classList.toggle('active');
-        });
+        if (hamburger && navUl) {
+            hamburger.addEventListener('click', () => {
+                navUl.classList.toggle('active');
+            });
+        }
 
         // Dropdown Toggle
         function toggleDropdown() {
             const dropdown = document.getElementById('dropdownMenu');
-            dropdown.classList.toggle('active');
+            if (dropdown) {
+                dropdown.classList.toggle('active');
+            }
         }
 
         // Close Dropdown when clicking outside
         document.addEventListener('click', (event) => {
             const dropdown = document.getElementById('dropdownMenu');
             const avatar = document.querySelector('.avatar');
-            if (!avatar.contains(event.target) && !dropdown.contains(event.target)) {
+            if (dropdown && avatar && !avatar.contains(event.target) && !dropdown.contains(event.target)) {
                 dropdown.classList.remove('active');
             }
         });

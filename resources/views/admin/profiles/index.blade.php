@@ -114,7 +114,7 @@
             let file = this.files[0];
             if (file) {
                 let url = URL.createObjectURL(file);
-                $(this).closest('.form-group').find('.preview_img').attr('src', url);
+                $(this).closest('.form-group').find('.preview_img_profile').attr('src', url);
             }
         });
 

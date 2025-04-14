@@ -398,7 +398,6 @@
                             <h2>${roomType.room_type_name}</h2>
                             <p><strong>Loại:</strong> ${roomType.capacity} người</p>
                             <p><strong>Giá:</strong> ${roomType.room_type_price.toLocaleString('vi-VN', { maximumFractionDigits: 0 })} VNĐ/tháng</p>
-                            <p><strong>Trạng thái:</strong> ${roomType.available_slots > 0 ? 'Trống' : 'Đã đặt'} (${roomType.available_slots}/${roomType.capacity})</p>
                             <p><strong>Mô tả:</strong> Phòng ${roomType.has_air_conditioner ? 'có máy lạnh' : 'không có máy lạnh'}, ${roomType.allow_cooking ? 'cho phép nấu ăn' : 'không cho phép nấu ăn'}.</p>
                             <div class="amenities">
                                 ${roomType.has_air_conditioner ? '<span>Máy lạnh</span>' : ''}

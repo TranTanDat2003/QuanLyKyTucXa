@@ -28,12 +28,12 @@
                         </select>
                         <span class="text-danger" id="add_gender-error"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display: none;">
                         <label for="phone">Số điện thoại</label>
                         <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone') }}">
                         <span class="text-danger" id="add_phone-error"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display: none;">
                         <label for="address">Địa chỉ</label>
                         <input type="text" name="address" id="address" class="form-control" value="{{ old('address') }}">
                         <span class="text-danger" id="add_address-error"></span>
@@ -43,12 +43,12 @@
                         <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}">
                         <span class="text-danger" id="add_email-error"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display: none;">
                         <label for="major">Ngành học</label>
                         <input type="text" name="major" id="major" class="form-control" value="{{ old('major') }}">
                         <span class="text-danger" id="add_major-error"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display: none;">
                         <label for="class">Lớp</label>
                         <input type="text" name="class" id="class" class="form-control" value="{{ old('class') }}">
                         <span class="text-danger" id="add_class-error"></span>

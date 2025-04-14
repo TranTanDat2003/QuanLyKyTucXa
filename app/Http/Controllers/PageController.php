@@ -141,7 +141,7 @@ class PageController extends Controller
             ], 400);
         }
 
-        $currentRoom = Contract::getContractWithStudentAndSemester(
+        $currentRoom = Contract::getContractWithStudentAndSemesterAndStatus(
             $studentId,
             $semester->semester_id
         );

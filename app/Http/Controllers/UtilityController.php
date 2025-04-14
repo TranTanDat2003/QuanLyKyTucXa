@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UtilityRequest;
 use App\Models\Room;
+use App\Models\Semester;
 use App\Models\Utility;
 use App\Models\UtilityRate;
 use Illuminate\Http\Request;
@@ -48,6 +49,15 @@ class UtilityController extends Controller
             $room = Room::findOrFail($validated['room_id']);
             $rate = UtilityRate::findOrFail($validated['rate_id']);
             $currentUser = Auth::user();
+
+            $currentSemester = Semester::getCurrentSemester();
+
+            if (!$currentSemester) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Thời gian hiện tại không trong học kỳ nào'
+                ], 404);
+            }
 
             if (!$currentUser || !$currentUser->staff) {
                 return response()->json([

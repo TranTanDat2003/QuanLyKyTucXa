@@ -21,13 +21,3 @@
     }
 </style>
 @endpush
-
-@push('scripts')
-<script>
-    const feedbacksIndexUrl = '{{ route("feedbacks.index") }}';
-    const feedbacksBaseUrl = '{{ url("/feedbacks") }}';
-    const feedbacksImageBaseUrl = '{{ asset("images/feedbacks") }}';
-    const defaultProfileImageUrl = '{{ asset("images/profiles/default_profile.jpg") }}';
-</script>
-<script src="{{ asset('js/feedbacks.js') }}"></script>
-@endpush

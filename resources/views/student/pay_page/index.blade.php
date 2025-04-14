@@ -41,11 +41,11 @@
                         {{ $contract->is_paid ? 'Đã thanh toán' : 'Chưa thanh toán' }}
                         @if ($contract->status === 'Chờ duyệt')
                             <span class="pending"> (Chờ duyệt)</span>
-                        @elseif ($contract->status === 'Đã hủy')
-                            <span class="canceled"> (Đã hủy)</span>
+                        @elseif ($contract->status === 'Hủy')
+                            <span class="canceled"> (Hợp đồng đã bị hủy)</span>
                         @endif
                     </p>
-                    @if (!$contract->is_paid && $contract->status !== 'Chờ duyệt' && $contract->status !== 'Đã hủy')
+                    @if (!$contract->is_paid && $contract->status !== 'Chờ duyệt' && $contract->status !== 'Hủy' && $contract->status !== 'Hết hạn')
                         <a href="#" class="pay-btn" 
                             data-id="{{ $contract->contract_id }}" 
                             data-type="contract" 

@@ -77,6 +77,14 @@ class Contract extends Model
             ->first();
     }
 
+    public static function getContractWithStudentAndSemesterAndStatus($studentId, $semesterId)
+    {
+        return self::where('student_id', $studentId)
+            ->where('semester_id', $semesterId)
+            ->where('status', 'Đang ở')
+            ->first();
+    }
+
     // Tính contract_cost dựa trên room_type_price và số tháng
     public function calculateContractCost($startDate = null, $endDate = null)
     {
@@ -122,8 +130,10 @@ class Contract extends Model
             $this->status = 'Hủy';
             $this->save();
 
-            $room = $this->room;
-            $room->updateAvailableSlots();
+            // Chỉ cập nhật số chỗ trống nếu hợp đồng có liên kết với phòng
+            if ($this->room) {
+                $this->room->updateAvailableSlots();
+            }
 
             return $this;
         });

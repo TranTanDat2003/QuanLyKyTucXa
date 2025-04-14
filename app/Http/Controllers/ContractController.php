@@ -107,6 +107,15 @@ class ContractController extends Controller
     {
         try {
             $contract = Contract::findOrFail($contractId);
+
+            // Ngăn hủy nếu hợp đồng đã bị hủy hoặc hết hạn
+            if (in_array($contract->status, ['Hủy', 'Hết hạn'])) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Hợp đồng đã được hủy hoặc hết hạn'
+                ], 400);
+            }
+
             $contract->cancel();
 
             return response()->json(['success' => true, 'message' => 'Hủy hợp đồng thành công'], 200);

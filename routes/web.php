@@ -54,9 +54,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/utility-bills/{utilityBillId}/payment', [UtilityBillController::class, 'initiatePayment'])->name('utility.payment');
 
         // Route cho thông tin sinh viên
-        Route::get('/profile', [PageController::class, 'showProfilePage'])->name('student.profile');
-        Route::put('/profile/update', [StudentController::class, 'updateProfile'])->name('student.profile.update');
-        Route::put('/profile/password', [StudentController::class, 'updatePassword'])->name('student.password.update');
+        Route::get('/student/profile', [PageController::class, 'showProfilePage'])->name('student.profile');
+        Route::put('/student/profile/update', [StudentController::class, 'updateProfile'])->name('student.profile.update');
+        Route::put('/student/profile/password', [StudentController::class, 'updatePassword'])->name('student.password.update');
     });
 
     Route::middleware('admin')->group(function () {

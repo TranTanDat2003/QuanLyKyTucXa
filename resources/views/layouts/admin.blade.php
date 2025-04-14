@@ -140,7 +140,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Dịch vụ:</h6>
                         <a class="collapse-item {{ request()->routeIs('services.index') ? 'active' : '' }}" href="{{ route('services.index') }}">Danh sách dịch vụ</a>
-                        <a class="collapse-item" href="#">Dịch vụ sinh viên</a>
+                        {{-- <a class="collapse-item" href="#">Dịch vụ sinh viên</a> --}}
                     </div>
                 </div>
             </li>

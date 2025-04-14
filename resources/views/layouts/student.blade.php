@@ -66,15 +66,6 @@
                 dropdown.classList.remove('active');
             }
         });
-
-        // Simulate Loading
-        window.addEventListener('load', () => {
-            const loading = document.querySelector('.loading');
-            loading.style.display = 'flex';
-            setTimeout(() => {
-                loading.style.display = 'none';
-            }, 2000);
-        });
     </script>
 
     <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>

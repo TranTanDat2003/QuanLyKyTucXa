@@ -226,6 +226,7 @@
         }
 
         .profile-history h2 {
+            text-align: center;
             font-size: 20px;
             color: #1e3a8a;
             margin-bottom: 20px;

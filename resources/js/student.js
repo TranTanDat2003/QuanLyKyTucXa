@@ -1,57 +1,61 @@
 import './bootstrap';
 
-import '../css/app.css';
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const loading = document.querySelector('.loading');
-    
-    // Hiển thị loading khi bắt đầu
-    if (loading) {
-        loading.style.display = 'flex';
-    }
+    if (!loading) return;
+
+    // Đảm bảo loading hiển thị ít nhất 500ms
+    const minLoadingTime = 500;
+    const startTime = Date.now();
 
     // Tìm tất cả các thẻ <img> trong trang
     const images = document.querySelectorAll('img');
     let loadedImages = 0;
     const totalImages = images.length;
 
-    // Nếu không có ảnh, ẩn loading ngay
-    if (totalImages === 0) {
-        if (loading) {
+    // Hàm kiểm tra và ẩn loading
+    function hideLoading() {
+        const elapsedTime = Date.now() - startTime;
+        if (elapsedTime < minLoadingTime) {
+            setTimeout(() => {
+                loading.style.display = 'none';
+            }, minLoadingTime - elapsedTime);
+        } else {
             loading.style.display = 'none';
         }
+    }
+
+    // Nếu không có ảnh, ẩn loading sau minLoadingTime
+    if (totalImages === 0) {
+        hideLoading();
         return;
     }
 
     // Theo dõi trạng thái tải của mỗi ảnh
     images.forEach((img) => {
-        // Nếu ảnh đã được tải từ cache
         if (img.complete) {
             loadedImages++;
-            checkAllImagesLoaded();
+            if (loadedImages >= totalImages) {
+                hideLoading();
+            }
         } else {
             img.addEventListener('load', () => {
                 loadedImages++;
-                checkAllImagesLoaded();
+                if (loadedImages >= totalImages) {
+                    hideLoading();
+                }
             });
             img.addEventListener('error', () => {
                 loadedImages++;
-                checkAllImagesLoaded();
+                if (loadedImages >= totalImages) {
+                    hideLoading();
+                }
             });
         }
     });
 
-    function checkAllImagesLoaded() {
-        if (loadedImages >= totalImages && loading) {
-            loading.style.display = 'none';
-        }
-    }
-
     // Fallback: Ẩn loading sau 10 giây nếu có lỗi
     setTimeout(() => {
-        if (loading) {
-            loading.style.display = 'none';
-        }
+        loading.style.display = 'none';
     }, 10000);
 });

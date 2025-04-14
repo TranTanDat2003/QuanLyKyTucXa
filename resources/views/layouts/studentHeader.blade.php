@@ -7,6 +7,7 @@
                 <li><a href="{{ route('student.service_booking') }}">Dịch vụ</a></li>
                 <li><a href="{{ route('student.facility_repair') }}">Sửa chữa cơ sở vật chất</a></li>
                 <li><a href="{{ route('student.pay') }}">Thanh toán</a></li>
+                <li><a href="{{ route('chat.show') }}">Chat</a></li>
                 <li>
                     @php
                         $student = Auth::user()->student;
